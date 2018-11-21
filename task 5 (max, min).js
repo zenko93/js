@@ -2,12 +2,12 @@ function matrix (rows , colons){
     let mas = [],
         n = 100, // Zadaem predel znacheniu
         max = 0,
-        min = n ,
+        min = n,
         random;
 
-    for (let i = 0; i < colons; i++) {
+    for (let i = 0; i < rows; i++) {
         mas[i] = [];
-        for (let j = 0; j < rows; j++) {
+        for (let j = 0; j < colons; j++) {
             random = Math.floor(Math.random(rows * colons)*n)
             mas[i][j] = random;
 
@@ -19,4 +19,4 @@ function matrix (rows , colons){
     console.log("Minimal'noe znachenie: %d \nMaksimal'noe znachenie: %d", max, min);
     return mas;
 }
-console.log(matrix(5,3));
+console.log(matrix(7,2));
