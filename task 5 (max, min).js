@@ -16,7 +16,7 @@ function matrix (rows , colons){
 
         }
     }
-    console.log("Minimal'noe znachenie: %d \nMaksimal'noe znachenie: %d", max, min);
+    console.log("Minimal'noe znachenie: %d \nMaksimal'noe znachenie: %d", min, max);
     return mas;
 }
 console.log(matrix(7,2));
