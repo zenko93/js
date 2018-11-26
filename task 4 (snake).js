@@ -4,7 +4,7 @@ function snake (rows, colons){
         stepG = rows - 1,
         stepV = colons - 1;
 
-    for (let i = 0; i < colons; i++) mas[i] = [];
+    for (let i = 0; i < rows; i++) mas[i] = [];
 
     for (let i = 1; i <= (rows * colons) ; i++){
         mas[y][x] = i ;
