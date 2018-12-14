@@ -37,7 +37,7 @@ class array {
 
 
     allDelete() {
-        this.a.fill(undefined,this.a.length);
+        this.a.splice(0,7);
     }
 
 
@@ -47,9 +47,9 @@ class array {
             console.log('You can not delete place = %d in array with length = %d', place, this.a.length)
         }
         else {
-            delete this.a[place];
-            for (let i = place; i < this.a.length - 1; i++) this.a[i] = this.a[i + 1];
-            delete this.a[this.a.length - 1];
+            this.a.splice(place,1);
+            // for (let i = place; i < this.a.length - 1; i++) this.a[i] = this.a[i + 1];
+            // delete this.a[this.a.length - 1];
         }
     }
 }
@@ -68,8 +68,8 @@ massiv.addFirst(-6)
 massiv.anyPlace(8, 2 )
 
 
-// massiv.placeDelete(3)
- massiv.allDelete()
+massiv.placeDelete(3)
+ // massiv.allDelete()
 
 
 
