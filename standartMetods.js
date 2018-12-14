@@ -52,6 +52,13 @@ class array {
             // delete this.a[this.a.length - 1];
         }
     }
+
+    logMetod (){
+        for (let i = 0; i < this.a.length ; i++) {
+            let otvet = this.a[i];
+            console.log(otvet);
+        }
+    }
 }
 
 
@@ -70,7 +77,7 @@ massiv.anyPlace(8, 2 )
 
 massiv.placeDelete(3)
  // massiv.allDelete()
-
+massiv.logMetod()
 
 
 console.log(massiv.a)
