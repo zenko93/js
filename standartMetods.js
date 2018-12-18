@@ -4,61 +4,55 @@ class array {
         this.a = [];
     }
 
-
     addFirst(znach) {
-        this.a[this.i] = znach;
+        this.addInPos(znach, 0);
+    }
+
+    add(elem) {
+        this.a[this.i] = elem;
         this.i++;
-        if (this.a.length > 1) {
-            znach = this.a[this.a.length - 1];
-            for (let i = this.a.length - 1; i > 0; --i) this.a[i] = this.a[i - 1];
-            this.a[0] = znach;
+    }
+
+    addInPos(znach, idx) { //ставит значение на место и двигает все остальные значения на 1 вперед
+
+        if(this.granici(idx) === true){
+            this.add(znach);
+            znach = this.a[this.i - 1];
+            for (let k = this.i - 1; k > idx; --k) this.a[k] = this.a[k - 1];
+            this.a[idx] = znach;
         }
     }
 
 
-    anyPlace(znach, place) { //ставит значение на место и двигает все остальные значения на 1 вперед
-
-        if (place < 0 || place > this.a[this.a.length]) {
-            console.log('You can not put your znach = %d on the place = %d  in array with length = %d', znach, place, this.a.length)
-        }
-        else {
-            this.a[this.i] = znach;
-            this.i++;
-            znach = this.a[this.a.length - 1];
-            for (let i = this.a.length - 1; i > place; --i) this.a[i] = this.a[i - 1];
-            this.a[place] = znach;
-        }
-        //или можно не двигать значения а просто заменять их
-        // if{
-        //     this.a[place] = znach;
-        //     console.log('Good =)')
-        // }
+    removeAll() {
+        this.a = []
     }
 
 
-    allDelete() {
-        this.a.splice(0,7);
-    }
-
-
-    placeDelete(place) {
-
-        if (place < 0 || place > this.a[this.a.length]) {
-            console.log('You can not delete place = %d in array with length = %d', place, this.a.length)
-        }
-        else {
-            this.a.splice(place,1);
-            // for (let i = place; i < this.a.length - 1; i++) this.a[i] = this.a[i + 1];
-            // delete this.a[this.a.length - 1];
+    removeByPos(place) {
+        if(this.granici(place) === true){
+            for (let j = place; j < this.i - 1; j++) this.a[j] = this.a[j + 1];
+            this.i--;
         }
     }
 
     logMetod (){
-        for (let i = 0; i < this.a.length ; i++) {
-            let otvet = this.a[i];
-            console.log(otvet);
+        for (let i = 0; i < this.i ; i++) {
+            console.log(this.a[i]);
         }
     }
+
+    granici (idx){
+        if (idx < 0 || idx > this.i) {
+            console.log('Invalid index = %d in array length = %d', idx, this.i)
+            return false;
+        }
+        else{
+            return true;
+        }
+
+    }
+
 }
 
 
@@ -72,12 +66,18 @@ massiv.addFirst(1)
 massiv.addFirst(-2)
 massiv.addFirst(-6)
 
-massiv.anyPlace(8, 2 )
+massiv.addInPos(8,3)
 
+massiv.removeByPos(100)
+massiv.removeByPos(0)
+massiv.removeByPos(0)
+massiv.removeByPos(0)
 
-massiv.placeDelete(3)
  // massiv.allDelete()
+massiv.add(5)
+
 massiv.logMetod()
+// massiv.addFirst(44)
 
 
 console.log(massiv.a)
