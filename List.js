@@ -6,7 +6,6 @@ class list{
         this.tail = null;
         this.size = 0;
         this.previous = null;
-
     }
 
     add(plus) {
@@ -27,17 +26,17 @@ class list{
     addInPos(znach, index) {
         this.schet = 0;
         this.current = this.head;
-        this.previous = null
+        this.previous = null;
 
         while(this.current != null){
-            if(this.schet === index){
+            if(this.schet === index ){
                 if(this.previous != null){
                     let neo = new Node(znach);
                     this.previous.next = neo;
                     neo.next = this.current.next;
 
                     if(this.current.next == null){
-                        this.add(znach);
+                       this.add(znach);
                     }
                 }
                 else{
@@ -65,6 +64,7 @@ class list{
     removeByPos(position) {
         this.count = 0;
         this.current = this.head;
+        this.previous = null;
 
         while (this.current != null) {
             if (this.count === position) {
@@ -78,31 +78,23 @@ class list{
                 else {
                     this.head = this.head.next;
 
-                    if (this.head == null)
-                    {
+                    if (this.head == null) {
                         this.tail = null;
                     }
                 }
                 this.size--;
-                return true;
             }
             this.previous = this.current;
             this.current = this.current.next;
             this.count ++;
         }
 
-        return false;
     }
 
 
     logMetod (){
-
+        console.log(this.head);
     }
-
-    granici (idx){
-        // if()
-    }
-
 }
 
 class Node{
@@ -111,7 +103,6 @@ class Node{
         this.next = null;
     }
 }
-// list.prototype = new Node;
 puk = new list()
 
 
@@ -120,13 +111,22 @@ puk.add(77)
 puk.add(88)
 puk.add(55)
 
-puk.removeByPos(1)
-puk.addInPos (11, 0)
+puk.removeByPos(0)
+puk.removeByPos(0)
+puk.removeByPos(0)
 
-// puk.removeAll();
+puk.addFirst(2)
+puk.removeAll();
+puk.add(55)
+
+
+puk.addInPos (11,0)
+puk.addInPos (25,1)
+puk.addInPos (48,3)
+puk.logMetod()
 
 
 
-console.log(puk.head)
+
 
 
