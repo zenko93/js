@@ -38,24 +38,17 @@ class list {
                         previous.next = neo;
                         neo.next = current;
                         this.size++;
-
-                        // if (current.next == null) {
-                        //     this.add(znach);
-                        //     this.size++;
-                        // }
                     }
                     else {
                         let neo = new Node(znach);
                         this.head = neo;
                         this.head.next = current;
                         this.size++;
-
                     }
                 }
                 previous = current;
                 current = current.next;
                 count++;
-
             }
         }
     }
@@ -115,11 +108,18 @@ class list {
     }
 
     logMetod() {
-        for (let i = this.head; i > this.size; i++) {
-            console.log (i)
+        let current = this.head;
+        let pool = [];
+
+        while (current != null) {
+            pool.push(current.value);
+            current = current.next;
         }
+        console.log(pool.join(' -> ') + ' -> null')
     }
+
 }
+
 
 class Node{
     constructor(value, next){
@@ -134,13 +134,11 @@ puk = new list()
 puk.add(1)
 puk.add(2)
 
-puk.addInPos(3,1)
+puk.addInPos(3,0)
 puk.add(4)
-puk.removeByPos(0);
-puk.removeByPos(0);
 
 
-puk.addInPos(3,3)
+puk.addInPos(88,3)
 
 puk.logMetod()
 
