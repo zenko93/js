@@ -116,8 +116,8 @@ class list {
             current = current.next;
         }
         console.log(pool.join(' -> ') + ' -> null')
+        console.log("Size = " + this.size)
     }
-
 }
 
 
@@ -131,14 +131,17 @@ class Node{
 puk = new list()
 
 
+puk.add(0)
 puk.add(1)
+
 puk.add(2)
+puk.add(3)
+puk.addInPos(6,3)
+puk.addInPos(7,2)
+puk.add(8)
+puk.removeByPos(0)
+puk.addInPos(9,0)
 
-puk.addInPos(3,0)
-puk.add(4)
-
-
-puk.addInPos(88,3)
 
 puk.logMetod()
 
