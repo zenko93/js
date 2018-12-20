@@ -1,17 +1,19 @@
 
-class list{
+class list {
 
     constructor() {
         this.head = null;
         this.tail = null;
         this.size = 0;
         this.previous = null;
+
     }
+
 
     add(plus) {
         this.node = new Node(plus);
 
-        if(this.head == null) {
+        if (this.head == null) {
             this.head = this.node;
             this.tail = this.node;
         }
@@ -19,41 +21,50 @@ class list{
             this.tail.next = this.node;
             this.tail = this.node;
         }
-        this.size ++;
+        this.size++;
     }
 
 
     addInPos(znach, index) {
-        this.schet = 0;
-        this.current = this.head;
-        this.previous = null;
+        let count = 0;
+        let current = this.head;
+        let previous = null;
 
-        while(this.current != null){
-            if(this.schet === index ){
-                if(this.previous != null){
-                    let neo = new Node(znach);
-                    this.previous.next = neo;
-                    neo.next = this.current.next;
+        if (this.granici(index) === true) {
+            while (current != null) {
+                if (count === index) {
+                    if (previous != null) {
+                        let neo = new Node(znach);
+                        previous.next = neo;
+                        neo.next = current;
+                        this.size++;
 
-                    if(this.current.next == null){
-                       this.add(znach);
+                        // if (current.next == null) {
+                        //     this.add(znach);
+                        //     this.size++;
+                        // }
+                    }
+                    else {
+                        let neo = new Node(znach);
+                        this.head = neo;
+                        this.head.next = current;
+                        this.size++;
+
                     }
                 }
-                else{
-                    let neo = new Node(znach);
-                    this.head = neo;
-                    this.head.next = this.current;
-                }
+                previous = current;
+                current = current.next;
+                count++;
+
             }
-            this.previous = this.current;
-            this.current = this.current.next;
-            this.schet++;
         }
     }
+
 
     addFirst(znach) {
         this.addInPos(znach, 0);
     }
+
 
     removeAll() {
         this.head = null;
@@ -61,18 +72,19 @@ class list{
         this.size = 0;
     }
 
+
     removeByPos(position) {
-        this.count = 0;
-        this.current = this.head;
-        this.previous = null;
+        let count = 0;
+        let current = this.head;
+        let previous = null;
 
-        while (this.current != null) {
-            if (this.count === position) {
-                if (this.previous != null) {
-                    this.previous.next = this.current.next;
+        while (current != null) {
+            if (count === position) {
+                if (previous != null) {
+                    previous.next = current.next;
 
-                    if (this.current.next == null) {
-                        this.tail = this.previous;
+                    if (current.next == null) {
+                        this.tail = previous;
                     }
                 }
                 else {
@@ -84,16 +96,28 @@ class list{
                 }
                 this.size--;
             }
-            this.previous = this.current;
-            this.current = this.current.next;
-            this.count ++;
+            previous = current;
+            current = current.next;
+            count++;
+        }
+    }
+
+
+    granici(idx) {
+        if (idx < 0 || idx > this.size) {
+            console.log('Invalid index = %d in array length = %d', idx, this.size);
+            return false;
+        }
+        else {
+            return true;
         }
 
     }
 
-
-    logMetod (){
-        console.log(this.head);
+    logMetod() {
+        for (let i = this.head; i > this.size; i++) {
+            console.log (i)
+        }
     }
 }
 
@@ -103,28 +127,22 @@ class Node{
         this.next = null;
     }
 }
+
 puk = new list()
 
 
-puk.add(66)
-puk.add(77)
-puk.add(88)
-puk.add(55)
+puk.add(1)
+puk.add(2)
 
-puk.removeByPos(0)
-puk.removeByPos(0)
-puk.removeByPos(0)
-
-puk.addFirst(2)
-puk.removeAll();
-puk.add(55)
+puk.addInPos(3,1)
+puk.add(4)
+puk.removeByPos(0);
+puk.removeByPos(0);
 
 
-puk.addInPos (11,0)
-puk.addInPos (25,1)
-puk.addInPos (48,3)
+puk.addInPos(3,3)
+
 puk.logMetod()
-
 
 
 
