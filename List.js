@@ -5,21 +5,19 @@ class list {
         this.head = null;
         this.tail = null;
         this.size = 0;
-        this.previous = null;
-
     }
 
 
     add(plus) {
-        this.node = new Node(plus);
+        let node = new Node(plus);
 
         if (this.head == null) {
-            this.head = this.node;
-            this.tail = this.node;
+            this.head = node;
+            this.tail = node;
         }
         else {
-            this.tail.next = this.node;
-            this.tail = this.node;
+            this.tail.next = node;
+            this.tail = node;
         }
         this.size++;
     }
@@ -85,6 +83,7 @@ class list {
 
                     if (this.head == null) {
                         this.tail = null;
+                        this.size = 0;
                     }
                 }
                 this.size--;
@@ -97,7 +96,7 @@ class list {
 
 
     granici(idx) {
-        if (idx < 0 || idx > this.size) {
+        if (idx < 0 || idx > this.size || this.size === 0) {
             console.log('Invalid index = %d in array length = %d', idx, this.size);
             return false;
         }
@@ -109,13 +108,13 @@ class list {
 
     logMetod() {
         let current = this.head;
-        let pool = [];
+        let pool = '';
 
         while (current != null) {
-            pool.push(current.value);
+            pool += current.value + " -> ";
             current = current.next;
         }
-        console.log(pool.join(' -> ') + ' -> null')
+        console.log(pool + 'null')
         console.log("Size = " + this.size)
     }
 }
@@ -131,20 +130,9 @@ class Node{
 puk = new list()
 
 
-puk.add(0)
-puk.add(1)
-
-puk.add(2)
-puk.add(3)
-puk.addInPos(6,3)
-puk.addInPos(7,2)
-puk.add(8)
-puk.removeByPos(0)
 puk.addInPos(9,0)
 
-
 puk.logMetod()
-
 
 
 
