@@ -131,6 +131,9 @@ puk = new list()
 
 
 puk.addInPos(9,0)
+puk.add(1)
+puk.add(2)
+puk.add(3)
 
 puk.logMetod()
 
